@@ -9,15 +9,15 @@ let package = Package(
         .iOS(.v14)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "metamask-ios-sdk",
             targets: ["metamask-ios-sdk"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/socketio/socket.io-client-swift", .upToNextMajor(from: "16.0.1"))
+    	.package(url: "https://github.com/daltoniam/Starscream", "4.0.4")
+
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -26,7 +26,8 @@ let package = Package(
             name: "metamask-ios-sdk",
             dependencies: [
                 .product(name: "SocketIO", package: "socket.io-client-swift"),
-                "Ecies"
+                "Ecies",
+		"Starscream"
             ]),
         .binaryTarget(
                 name: "Ecies",
